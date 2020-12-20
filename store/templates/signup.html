@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mx-auto border rounded pt-4 pb-4">
+            <div class="mx-auto d-flex justify-content-center alert alert-light border rounded">
+                <h3 >Create Your Account</h3>
+            </div>
+            
+            <form action="/signup" method="POST">
+                {% csrf_token %}
+
+                {% if error%}
+                    <div class="alert alert-danger">
+                        {{error}}
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input value="{{values.first_name}}" type="text" class="form-control" name="firstname" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input value="{{values.last_name}}" type="text" class="form-control" name="lastname" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Phone</label>
+                    <input value="{{values.phone}}" type="number" class="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input value="{{values.email}}" type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-info d-flex justify-content-between">Create an Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
